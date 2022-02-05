@@ -22,12 +22,12 @@ ORIENTATION=$(tail -n 1 sensor.log | grep 'orientation' | grep -oE '[^ ]+$')
 # Set the actions to be taken for each possible orientation
 case "$ORIENTATION" in
 normal)
-    xrandr -o normal && xinput set-prop "ELAN Touchscreen" --type=float "Coordinate Transformation Matrix" 0 0 0 0 0 0 0 0 0 ;;
+    xrandr --output eDP-1 --rotate normal && xinput set-prop "ELAN Touchscreen" --type=float "Coordinate Transformation Matrix" 0 0 0 0 0 0 0 0 0 ;;
 bottom-up)
-    xrandr -o inverted && xinput set-prop "ELAN Touchscreen" --type=float "Coordinate Transformation Matrix" -1 0 1 0 -1 1 0 0 1 ;;
+    xrandr --output eDP-1 --rotate inverted && xinput set-prop "ELAN Touchscreen" --type=float "Coordinate Transformation Matrix" -1 0 1 0 -1 1 0 0 1 ;;
 right-up)
-    xrandr -o right && xinput set-prop "ELAN Touchscreen" --type=float "Coordinate Transformation Matrix" 0 1 0 -1 0 1 0 0 1 ;;
+    xrandr --output eDP-1 --rotate right && xinput set-prop "ELAN Touchscreen" --type=float "Coordinate Transformation Matrix" 0 1 0 -1 0 1 0 0 1 ;;
 left-up)
-    xrandr -o left && xinput set-prop "ELAN Touchscreen" --type=float "Coordinate Transformation Matrix" 0 -1 1 1 0 0 0 0 1 ;;
+    xrandr --output eDP-1 --rotate left && xinput set-prop "ELAN Touchscreen" --type=float "Coordinate Transformation Matrix" 0 -1 1 1 0 0 0 0 1 ;;
 esac
 done
